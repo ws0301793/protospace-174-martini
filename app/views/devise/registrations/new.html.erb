@@ -15,7 +15,9 @@
         <div class="field">
           <%= f.label :password, "パスワード（6文字以上）" %><br />
           <%= f.password_field :password, id:"user_password", autocomplete: "new-password" %>
-          <%= f.text_field :password, autofocus: true, minlength: "6" %>
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
         </div>
 
         <div class="field">
