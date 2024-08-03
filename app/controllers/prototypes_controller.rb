@@ -12,7 +12,7 @@ class PrototypesController < ApplicationController
   def create
     @prototype = current_user.prototypes.new(prototype_params)
     if @prototype.save
-      redirect_to root_path, notice: 'Prototype was successfully created.'
+      redirect_to root_path
     else
       render :new
     end
@@ -21,6 +21,6 @@ class PrototypesController < ApplicationController
   private
 
   def prototype_params
-    params.require(:prototype).permit(:name, :catch_copy, :concept, :image)
+    params.require(:prototype).permit(:name, :catch_copy, :concept, :user_id, :image)
   end
 end
