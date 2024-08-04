@@ -1,10 +1,23 @@
-<div class="contents row">
-  <% @tweets.each do |tweet| %>
-    <div class="content_post" style="background-image: url(<%= tweet.image %>);">
-      <p><%= tweet.text %></p>
-      <span class="name">
-        <%= tweet.name %>
-      </span>
+<main class="main">
+  <div class="inner">
+    <%# ログインしているときは以下を表示する %>
+      <%# <div class="greeting"> %>
+        <%# こんにちは、 %>
+        <%# <%= link_to "ユーザー名さん", root_path, class: :greeting__link%>
+      <%# </div> %>
+    <%# // ログインしているときは上記を表示する %>
+    <div class="card__wrapper">
+      <%# 投稿機能実装後、部分テンプレートでプロトタイプ投稿一覧を表示する %>
+      <div class="contents row">
+        <% @tweets.each do |tweet| %>
+          <div class="content_post" style="background-image: url(<%= tweet.image %>);">
+            <p><%= tweet.text %></p>
+            <span class="name">
+              <%= tweet.name %>
+            </span>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-</div>
+  </div>
+</main>
