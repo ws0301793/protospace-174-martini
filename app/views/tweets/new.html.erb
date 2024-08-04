@@ -1,0 +1,15 @@
+<div class="main">
+  <div class="inner">
+    <div class="form__wrapper">
+      <h2 class="page-heading">新規プロトタイプ投稿</h2>
+        <%# 部分テンプレートでフォームを表示する %>
+        <%= form_with(model: @tweet, local: true) do |form| %>
+          <%= form.text_field :name, placeholder: "Prototypename" %>
+          <%= form.text_field :catchcopy,placeholder:"catchcopy"%>
+          <%= form.text_field :concept,placeholder:"concept"%>
+          <%= form.text_field :image, placeholder: "Image Url" %>
+          <%= form.submit "保存する" %>
+        <% end %>
+    </div>
+  </div>
+</div>
