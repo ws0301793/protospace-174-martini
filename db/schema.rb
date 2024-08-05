@@ -59,27 +59,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_03_182916) do
     t.index ["user_id"], name: "index_prototypes_on_user_id"
   end
 
-  create_table "tweets", charset: "utf8", force: :cascade do |t|
-    t.string "name"
-    t.string "text"
-    t.text "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "username", default: "", null: false
+    t.text "profile", null: false
+    t.string "affiliation", default: "", null: false
+    t.string "position", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "nickname"
-    t.string "username"
-    t.string "profile"
-    t.string "occupation"
-    t.string "position"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
