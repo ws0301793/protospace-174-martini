@@ -13,6 +13,9 @@
   <ul>
     <% @prototypes.each do |prototype| %> 
       <li>
+        <%= link_to '詳細',prototype_path(prototype.id) %>
+      </li>
+      <li>
         <h2><%= prototype.name %></h2>
         <p><%= prototype.catch_copy %></p>
         <p><%= prototype.concept %></p>
