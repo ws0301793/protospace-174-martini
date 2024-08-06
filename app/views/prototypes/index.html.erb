@@ -9,16 +9,15 @@
   
     <div class="card__wrapper">
 
-  <h1>プロトタイプ一覧</h1>
   <ul>
     <% @prototypes.each do |prototype| %> 
       <li>
+        <% if prototype.image.attached? %>
+          <%= image_tag prototype.image.variant(resize: "300x200") %>
+        <% end %>
         <h2><%= prototype.name %></h2>
         <p><%= prototype.catch_copy %></p>
-        <p><%= prototype.concept %></p>
-        <% if prototype.image.attached? %>
-          <%= image_tag prototype.image %>
-        <% end %>
+        <p>by: <%= prototype.user.username %></p>
       </li>
     <% end %>
  </ul>
