@@ -15,6 +15,14 @@
       <li>
         <%= link_to '詳細',prototype_path(prototype.id) %>
       </li>
+      <% if user_signed_in? && current_user.id == prototype.user_id %>
+        <li>
+          <%= link_to '編集', edit_prototype_path(prototype.id) %>
+        </li>
+        <li>
+          <%= link_to '削除', prototypet_path(prototype.id), data: { turbo_method: :delete } %>
+        </li>
+      <% end %>
       <li>
         <h2><%= prototype.name %></h2>
         <p><%= prototype.catch_copy %></p>
