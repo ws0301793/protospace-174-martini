@@ -10,6 +10,7 @@ module Protospace174Martini
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.active_storage.variant_processor = :mini_magick
+    config.active_record.legacy_connection_handling = false
 
     # Configuration for the application, engines, and railties goes here.
     #
