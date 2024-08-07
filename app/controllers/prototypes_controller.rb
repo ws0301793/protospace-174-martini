@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_prototype, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
@@ -28,14 +28,22 @@ class PrototypesController < ApplicationController
     if @prototype.update(prototype_params)
       redirect_to @prototype, notice: 'プロトタイプ情報が更新されました'
     else
-      render :edit
+      render :edit  
     end
   end
 
-  def destroy
-    @prototype.destroy
-    redirect_to prototypes_path, notice: 'プロトタイプを削除しました'
+  def edit
+    @prototype = Prototype.find(params[:id])
+      redirect_to root_path unless current_user == @prototype.user
   end
+
+  def destroy
+    @prototype = Prototype.find(params[:id])
+    @prototype.destroy
+    redirect_to prototypes_path
+  end
+
+  def edit
 
   private
 
