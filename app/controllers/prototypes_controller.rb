@@ -1,5 +1,6 @@
 class PrototypesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
+  before_action :authenticate_user!, except: [:new, :create, :edit, :update, :destroy, :index, :show]
   before_action :set_prototype, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
@@ -25,6 +26,27 @@ class PrototypesController < ApplicationController
       render :new
     end
   end
+  
+  def edit
+    @prototype = Prototype.find(params[:id])
+      redirect_to root_path unless current_user == @prototype.user
+  end
+
+  def update
+    if @prototype.update(prototype_params)
+      redirect_to prototype_path(@prototype)
+    else
+      render :edit
+    end
+  end
+
+  
+  def destroy
+    @prototype = Prototype.find(params[:id])
+    @prototype.destroy
+    redirect_to prototypes_path
+  end
+
 
   def edit
     @prototype = Prototype.find(params[:id])
@@ -50,7 +72,7 @@ class PrototypesController < ApplicationController
   end
 
   private
-
+  
   def prototype_params
     params.require(:prototype).permit(:name, :catch_copy, :concept, :user_id, :image)
   end
