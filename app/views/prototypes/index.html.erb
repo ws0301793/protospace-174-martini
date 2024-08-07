@@ -28,9 +28,8 @@
       </ul>
     </div>
 
-    <div class="card__wrapper">
-  <ul>
-    <% @prototypes.each do |prototype| %> 
+      <ul>
+        <% @prototypes.each do |prototype| %> 
       <li>
         <% if prototype.image.attached? %>
           <%= image_tag prototype.image %>
