@@ -42,5 +42,8 @@ class PrototypesController < ApplicationController
   end
 
   def correct_user
-    redirect_to root_path,unless @prototype.user == current_user
+    unless @prototype.user == current_user
+      redirect_to root_path
+    end
+  end
 end
