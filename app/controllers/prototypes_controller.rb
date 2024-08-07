@@ -23,6 +23,7 @@ class PrototypesController < ApplicationController
       redirect_to prototype_path(@prototype)
     else
       redirect_to prototype_path(@prototype)
+    end
   end
 
   def show
