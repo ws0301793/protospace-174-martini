@@ -26,9 +26,9 @@ class PrototypesController < ApplicationController
   
   def update
     if @prototype.update(prototype_params)
-      redirect_to @prototype, notice: 'プロトタイプ情報が更新されました'
+      redirect_to prototype_path(@prototype)
     else
-      render :edit  
+      render :edit
     end
   end
 
@@ -40,12 +40,16 @@ class PrototypesController < ApplicationController
   def destroy
     @prototype = Prototype.find(params[:id])
     @prototype.destroy
-    redirect_to prototypes_path
+    redirect_to root_path
   end
 
-  def edit
 
   private
+
+  def set_prototype
+    @prototype = Prototype.find(params[:id])
+  end
+
 
   def prototype_params
     params.require(:prototype).permit(:name, :catch_copy, :concept, :user_id, :image)
