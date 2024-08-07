@@ -3,10 +3,31 @@
     <% if user_signed_in? %>
       <div class="greeting">
         こんにちは、
-        <%= link_to  "#{current_user.username}さん", user_path(current_user), class: :greeting__link %>
+        <%= link_to "#{current_user.username}さん", user_path(current_user), class: :greeting__link %>
       </div>
     <% end %>
-  
+
+    <div class="prototypes__wrapper">
+      <ul class="prototypes_list">
+        <% @prototypes.each do |prototype| %>
+          <li class="prototype_item">
+            <%= link_to prototype_path(prototype) do %>
+              <div class="prototype_image">
+                <% if prototype.image.attached? %>
+                  <%= image_tag prototype.image, alt: prototype.name %>
+                <% end %>
+              </div>
+              <div class="prototype_info">
+                <p class="prototype_name"><%= prototype.name %></p>
+                <p class="prototype_description"><%= prototype.catch_copy %></p>
+                <p class="prototype_author">by  <%= prototype.user.username %></p>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
     <div class="card__wrapper">
   <ul>
     <% @prototypes.each do |prototype| %> 
@@ -20,7 +41,7 @@
         
       </li>
     <% end %>
- </ul>
+  </ul>
 
     </div>
   </div>

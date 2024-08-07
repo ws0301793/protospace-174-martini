@@ -1,0 +1,15 @@
+<ul class="prototypes_list">
+  <% prototypes.each do |prototype| %>
+    <li class="prototype_item">
+      <%= link_to prototype_path(prototype) do %>
+        <div class="prototype_image">
+          <%= image_tag prototype.image, alt: prototype.name if prototype.image.attached? %>
+        </div>
+        <div class="prototype_info">
+          <p class="prototype_name"><%= prototype.name %></p>
+          <p class="prototype_description"><%= prototype.catch_copy %></p>
+        </div>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
