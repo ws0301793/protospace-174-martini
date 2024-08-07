@@ -1,0 +1,21 @@
+<%= form_with(model: @prototype, local: true) do |f| %>
+  <div class="field">
+    <%= f.label :name, "プロトタイプ名称" %>
+    <%= f.text_field :name %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :concept, "コンセプト" %>
+    <%= f.text_area :concept %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image, "画像" %>
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit '保存する' %>
+  </div>
+<% end %>
