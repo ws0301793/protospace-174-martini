@@ -1,6 +1,7 @@
 class PrototypesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_prototype, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
     @prototypes = Prototype.all
@@ -8,6 +9,7 @@ class PrototypesController < ApplicationController
 
   def show
     @comment = Comment.new
+    @prototype = Prototype.find(params[:id])
   end
 
   def new
@@ -26,7 +28,7 @@ class PrototypesController < ApplicationController
 
   def edit
     @prototype = Prototype.find(params[:id])
-    redirect_to prototypes_path
+    redirect_to prototypes_path unless @prototype.user == current_user
   end
 
   def update
@@ -38,6 +40,7 @@ class PrototypesController < ApplicationController
   end
 
   def destroy
+    @prototype = Prototype.find(params[:id])
     if @prototype.user == current_user
       @prototype.destroy
       redirect_to prototypes_path
@@ -53,12 +56,10 @@ class PrototypesController < ApplicationController
   end
 
   def set_prototype
-    @prototype = Prototype.find(params[:id])
+    @prototype = Prototype.find_by(id: params[:id])
   end
 
   def correct_user
-    unless @prototype.user == current_user
-      redirect_to root_path
-    end
+    redirect_to root_path unless @prototype.user == current_user
   end
 end

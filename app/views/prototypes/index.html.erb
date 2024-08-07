@@ -8,20 +8,22 @@
     <% end %>
   
     <div class="card__wrapper">
-
-  <ul>
-    <% @prototypes.each do |prototype| %> 
-      <li>
-        <% if prototype.image.attached? %>
-          <%= image_tag prototype.image.variant(resize: "300x200") %>
+      <ul>
+        <% @prototypes.each do |prototype| %> 
+          <li>
+            <% if prototype.image.attached? %>
+              <%= link_to prototype_path(prototype) do %>
+                <%= image_tag prototype.image.variant(resize: "300x200") %>
+              <% end %>
+            <% end %>
+            <h2>
+              <%= link_to prototype.name, prototype_path(prototype) %>
+            </h2>
+            <p><%= prototype.catch_copy %></p>
+            <p>by: <%= prototype.user.username %></p>
+          </li>
         <% end %>
-        <h2><%= prototype.name %></h2>
-        <p><%= prototype.catch_copy %></p>
-        <p>by: <%= prototype.user.username %></p>
-      </li>
-    <% end %>
- </ul>
-
+      </ul>
     </div>
   </div>
 </main>
