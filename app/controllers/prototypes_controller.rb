@@ -13,11 +13,16 @@ class PrototypesController < ApplicationController
 
   def create
     @prototype = current_user.prototypes.new(prototype_params)
+    @comment = @prototype.comments.create(comment_params.merge(user: current_user))
     if @prototype.save
       redirect_to root_path
     else
       render :new
     end
+    if @comment.save
+      redirect_to prototype_path(@prototype)
+    else
+      redirect_to prototype_path(@prototype)
   end
 
   def show
