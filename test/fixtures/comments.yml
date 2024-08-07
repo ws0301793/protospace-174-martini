@@ -2,10 +2,10 @@
 
 one:
   content: MyText
-  prototype: one
   user: one
+  prototype: one
 
 two:
   content: MyText
-  prototype: two
   user: two
+  prototype: two

@@ -6,42 +6,24 @@
         <%= link_to "#{current_user.username}さん", user_path(current_user), class: :greeting__link %>
       </div>
     <% end %>
-
-    <div class="prototypes__wrapper">
-      <ul class="prototypes_list">
-        <% @prototypes.each do |prototype| %>
-          <li class="prototype_item">
-            <%= link_to prototype_path(prototype) do %>
-              <div class="prototype_image">
-                <% if prototype.image.attached? %>
-                  <%= image_tag prototype.image, alt: prototype.name %>
-                <% end %>
-              </div>
-              <div class="prototype_info">
-                <p class="prototype_name"><%= prototype.name %></p>
-                <p class="prototype_description"><%= prototype.catch_copy %></p>
-                <p class="prototype_author">by  <%= prototype.user.username %></p>
-              </div>
+    
+    <div class="card__wrapper">
+      <ul>
+        <% @prototypes.each do |prototype| %> 
+          <li>
+            <% if prototype.image.attached? %>
+              <%= link_to prototype_path(prototype) do %>
+                <%= image_tag prototype.image.variant(resize: "300x200") %>
+              <% end %>
             <% end %>
+            <h2>
+              <%= link_to prototype.name, prototype_path(prototype) %>
+            </h2>
+            <p><%= prototype.catch_copy %></p>
+            <p>by: <%= prototype.user.username %></p>
           </li>
         <% end %>
       </ul>
-    </div>
-
-      <ul>
-        <% @prototypes.each do |prototype| %> 
-      <li>
-        <% if prototype.image.attached? %>
-          <%= image_tag prototype.image %>
-        <% end %>
-        <h2><%= prototype.name %></h2>
-        <p><%= prototype.catch_copy %></p>
-        <p><%= prototype.concept %></p>
-        
-      </li>
-    <% end %>
-  </ul>
-
     </div>
   </div>
 </main>

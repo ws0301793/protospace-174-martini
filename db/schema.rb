@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_07_115614) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_07_190450) do
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -40,9 +40,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_07_115614) do
   end
 
   create_table "comments", charset: "utf8", force: :cascade do |t|
-    t.text "content"
-    t.bigint "prototype_id"
+    t.text "conten
     t.bigint "user_id"
+    t.bigint "prototype_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["prototype_id"], name: "index_comments_on_prototype_id"
