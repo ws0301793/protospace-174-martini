@@ -8,8 +8,8 @@
     <% end %>
   
     <div class="card__wrapper">
-  　　<ul>
-    　　<% @prototypes.each do |prototype| %> 
+      <ul>
+        <% @prototypes.each do |prototype| %> 
       <li>
         <%= link_to '詳細',prototype_path(prototype.id) %>
       </li>
@@ -18,7 +18,7 @@
           <%= link_to '編集', edit_prototype_path(prototype.id) %>
         </li>
         <li>
-          <%= link_to '削除', prototypet_path(prototype.id), data: { turbo_method: :delete } %>
+          <%= link_to '削除', prototype_path(prototype.id), data: { turbo_method: :delete } %>
         </li>
       <% end %>
       <li>
