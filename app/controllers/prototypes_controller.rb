@@ -18,6 +18,14 @@ class PrototypesController < ApplicationController
     end
   end
 
+  def update
+    if @prototype.update(prototype_params)
+      redirect_to @prototype
+    else
+      render :edit
+    end
+  end
+
   private
 
   def prototype_params
