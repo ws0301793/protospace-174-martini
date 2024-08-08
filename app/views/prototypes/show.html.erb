@@ -2,9 +2,9 @@
   <div class="inner">
     <div class="prototype__wrapper">
       <% if @prototype %>
-        <h1 class="prototype__heading">
+        <p class="prototype__hedding">
           <%= @prototype.name %>
-        </h1>
+        </p>
 
         <p class="prototype__user">
           <%= link_to "by #{@prototype.user.username}", user_path(@prototype.user), class: "prototype__user" %>
@@ -26,7 +26,7 @@
           <p class="detail__message">
             <%= @prototype.catch_copy %>
           </p>
-     
+        </div>
         <div class="prototype__detail">
           <p class="detail__title">コンセプト</p>
           <p class="detail__message">
@@ -60,8 +60,6 @@
           <% end %>
         </ul>
       </div>
-      <% else %>
-      <% end %>
     </div>
   </div>
 </main>
