@@ -26,6 +26,18 @@ class PrototypesController < ApplicationController
     end
   end
   
+  def create_comment
+    @prototype = Prototype.find(params[:id])
+    @comment = @prototype.comments.build(comment_params)
+    @comment.user = current_user
+
+    if @comment.save
+      redirect_to prototype_path(@prototype)
+    else
+      redirect_to prototype_path(@prototype)
+    end
+  end
+
   def edit
   end
 
@@ -71,6 +83,10 @@ class PrototypesController < ApplicationController
   
   def prototype_params
     params.require(:prototype).permit(:name, :catch_copy, :concept, :user_id, :image)
+  end
+
+  def comment_params
+    params.require(:comment).permit(:content)
   end
 
   def set_prototype
