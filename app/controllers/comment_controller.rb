@@ -12,9 +12,9 @@ class Comment < ApplicationRecord
     @comment.user = current_user
 
     if @comment.save
-      redirect_to prototype_path(@prototype), notice: 'コメントが投稿されました。'
+      redirect_to prototype_path(@prototype)
     else
-      redirect_to prototype_path(@prototype), alert: 'コメントの投稿に失敗しました。'
+      redirect_to prototype_path(@prototype)
     end
   end
 

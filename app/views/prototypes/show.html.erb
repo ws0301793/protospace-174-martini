@@ -8,13 +8,13 @@
 
         <p class="prototype__user">
           <%= link_to "by #{@prototype.user.username}", user_path(@prototype.user), class: "prototype__user" %>
+        </p>
           <% if user_signed_in? && current_user.id == @prototype.user.id %>
             <div class="prototype__manage">
               <%= link_to "編集する", edit_prototype_path(@prototype), class: "prototype__btn" %>
               <%= link_to "削除する", prototype_path(@prototype), method: :delete, class: "prototype__btn" %>
             </div>
           <% end %>
-        </p>
 
       <div class="prototype__image">
         <%= image_tag @prototype.image if @prototype.image.attached? %>
@@ -38,7 +38,6 @@
       <div class="prototype__comments">
         <% if user_signed_in? %>
           <%= form_with(model: [ @prototype, Comment.new ], url: prototype_comments_path(@prototype), local: true) do |f| %>
-
             <div class="field">
               <%= f.label :content, "コメント" %><br />
               <%= f.text_field :content, id: "comment_content" %>
@@ -60,6 +59,8 @@
           <% end %>
         </ul>
       </div>
+      <% end %>
     </div>
   </div>
 </main>
+  
