@@ -57,6 +57,9 @@ class PrototypesController < ApplicationController
 
   def set_prototype
     @prototype = Prototype.find_by(id: params[:id])
+    unless @prototype
+      redirect_to root_path
+    end
   end
 
   def correct_user
