@@ -2,7 +2,7 @@
   <div class="inner">
     <div class="user__wrapper">
       <h2 class="page-heading">
-        <%= "#{@user.username}さんの情報"%>
+        <%= "#{@user.username}さんの情報" %>
       </h2>
       <table class="table">
         <tbody>
@@ -25,21 +25,10 @@
         </tbody>
       </table>
       <h2 class="page-heading">
-        <%= "#{@user.username}さんのプロトタイプ"%>
+        <%= "#{@user.username}さんのプロトタイプ" %>
       </h2>
       <div class="user__card">
-        <ul>
-          <% @prototypes.each do |prototype| %>
-            <li>
-              <h3><%= prototype.name %></h3>
-              <p><%= prototype.catch_copy %></p>
-              <p><%= prototype.concept %></p>
-              <% if prototype.image.attached? %>
-                <%= image_tag prototype.image, style: "width: 200px; height: 200px;" %>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
+        <%= render 'prototypes_list', prototypes: @prototypes %>
       </div>
     </div>
   </div>
