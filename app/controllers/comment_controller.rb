@@ -1,14 +1,9 @@
-class Comment < ApplicationRecord
+class CommentsController < ApplicationController
   before_action :authenticate_user!
-
-  belongs_to :user
-  belongs_to :prototype
-
-  validates :content, presence: true
 
   def create
     @prototype = Prototype.find(params[:prototype_id])
-    @comment = @prototype.comments.build(comment_params)
+    @comment = @prototype.comments.new(comment_params)
     @comment.user = current_user
 
     if @comment.save
