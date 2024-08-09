@@ -1,21 +1,18 @@
 <main class="main">
   <div class="inner">
     <div class="prototype__wrapper">
-      <% if @prototype %>
-        <h1 class="prototype__heading">
-          <%= @prototype.name %>
-        </h1>
-
-        <p class="prototype__user">
-          <%= link_to "by #{@prototype.user.username}", user_path(@prototype.user), class: "prototype__user" %>
-          <% if user_signed_in? && current_user.id == @prototype.user.id %>
-            <div class="prototype__manage">
-              <%= link_to "編集する", edit_prototype_path(@prototype), class: "prototype__btn" %>
-              <%= link_to "削除する", prototype_path(@prototype), method: :delete, class: "prototype__btn" %>
-            </div>
-          <% end %>
-        </p>
-
+      <p class="prototype__hedding">
+        <%= @prototype.name %>
+      </p>
+      <p class="prototype__user">
+        <%= link_to "by #{@prototype.user.username}", user_path(@prototype.user), class: "prototype__user" %>
+        <% if user_signed_in? && current_user.id == @prototype.user.id %>
+          <div class="prototype__manage">
+            <%= link_to "編集する", edit_prototype_path(@prototype), class: "prototype__btn" %>
+            <%= link_to "削除する", prototype_path(@prototype), method: :delete, class: "prototype__btn" %>
+          </div>
+        <% end %>
+      </p>
       <div class="prototype__image">
         <%= image_tag @prototype.image if @prototype.image.attached? %>
       </div>
@@ -26,7 +23,7 @@
           <p class="detail__message">
             <%= @prototype.catch_copy %>
           </p>
-     
+        </div>
         <div class="prototype__detail">
           <p class="detail__title">コンセプト</p>
           <p class="detail__message">
@@ -37,8 +34,7 @@
 
       <div class="prototype__comments">
         <% if user_signed_in? %>
-          <%= form_with(model: [ @prototype, Comment.new ], url: prototype_comments_path(@prototype), local: true) do |f| %>
-
+          <%= form_with(model: [ @prototype, @comment ], url: prototype_comments_path(@prototype), local: true) do |f| %>
             <div class="field">
               <%= f.label :content, "コメント" %><br />
               <%= f.text_field :content, id: "comment_content" %>
@@ -60,8 +56,7 @@
           <% end %>
         </ul>
       </div>
-      <% else %>
-      <% end %>
     </div>
   </div>
 </main>
+  
