@@ -11,6 +11,7 @@
       <ul>
         <% @prototypes.each do |prototype| %> 
           <li>
+            
             <% if prototype.image.attached? %>
               <%= link_to prototype_path(prototype) do %>
                 <%= image_tag prototype.image.variant(resize: "300x200") %>
