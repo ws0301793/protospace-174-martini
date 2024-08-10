@@ -6,13 +6,13 @@
       </p>
       <p class="prototype__user">
         <%= link_to "by #{@prototype.user.username}", user_path(@prototype.user), class: "prototype__user" %>
+      </p>
         <% if user_signed_in? && current_user.id == @prototype.user.id %>
           <div class="prototype__manage">
             <%= link_to "編集する", edit_prototype_path(@prototype), class: "prototype__btn" %>
-            <%= link_to "削除する", prototype_path(@prototype), method: :delete, class: "prototype__btn" %>
+            <%= link_to "削除する", prototype_path(@prototype), data: { turbo_method: :delete }, class: "prototype__btn" %>
           </div>
         <% end %>
-      </p>
       <div class="prototype__image">
         <%= image_tag @prototype.image if @prototype.image.attached? %>
       </div>
