@@ -10,18 +10,17 @@
     <div class="card__wrapper">
       <ul>
         <% @prototypes.each do |prototype| %> 
-          <li>
-            
+          <li class="card">
             <% if prototype.image.attached? %>
               <%= link_to prototype_path(prototype) do %>
-                <%= image_tag prototype.image.variant(resize: "300x200") %>
+                 <%= image_tag prototype.image, class: "card__img" %>
               <% end %>
             <% end %>
-            <h2>
+            <h2 class="card__title">
               <%= link_to prototype.name, prototype_path(prototype) %>
             </h2>
-            <p><%= prototype.catch_copy %></p>
-            <p>by: <%= prototype.user.username %></p>
+             <p class="card__summary"><%= prototype.catch_copy %></p>
+            <p class="card__user">by: <%= prototype.user.username %></p>
           </li>
         <% end %>
       </ul>
