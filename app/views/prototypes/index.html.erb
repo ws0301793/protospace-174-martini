@@ -20,7 +20,7 @@
               <%= link_to prototype.name, prototype_path(prototype) %>
             </h2>
              <p class="card__summary"><%= prototype.catch_copy %></p>
-            <p class="card__user">by: <%= prototype.user.username %></p>
+            <p class="card__user">by: <%= link_to prototype.user.username,user_path(prototype.user) %></p>
           </li>
         <% end %>
       </ul>
